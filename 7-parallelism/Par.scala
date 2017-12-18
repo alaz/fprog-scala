@@ -118,4 +118,7 @@ object Par {
   // exercise: map3, map4, etc.
   def map3[A,B,C,D](pa: Par[A], pb: Par[B], pc: Par[C])(f: (A,B,C) => D): Par[D] =
     map2(map2(pa,pb)(identity), pc) { (ab, c) => f(ab._1, ab._2, c) }
+
+  // Exercise 7.11: implement choiceN, then choice via choiceN
+  // Exercise 7.12: choiceMap
 }
