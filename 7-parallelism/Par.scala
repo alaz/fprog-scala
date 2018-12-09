@@ -121,4 +121,11 @@ object Par {
 
   // Exercise 7.11: implement choiceN, then choice via choiceN
   // Exercise 7.12: choiceMap
+  // Exercise 7.13: chooser
+
+  // Exercise 7.14: Implement join[A](a: Par[Par[A]]): Par[A]
+  def join[A](a: Par[Par[A]]): Par[A] = es => run(es)(run(es)(a).get)
+  def joinViaFlatMap[A](a: Par[Par[A]]): Par[A] = flatMap(a)(identity)
+  def flatMapViaJoin[A,B](a: Par[A])(f: A => Par[B]): Par[B] = join(map(a)(f))
+
 }
